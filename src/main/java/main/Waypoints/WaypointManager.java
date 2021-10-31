@@ -50,6 +50,17 @@ public class WaypointManager {
                     String dataToSend = Ka50.getCommands(Ka50Coords).toString();
                     PortSender.send(dataToSend);
                 }
+            } else if(model.contains("SA342")) {
+                if(waypoints.size()>9){
+                    GUI.error("The Gazelle can store a maximum of 9 waypoints. ");
+                } else {
+                    List<Point> GazelleCoords = Gazelle.getCoords(waypoints);
+                    System.out.println(GazelleCoords);
+                    String dataToSend = Gazelle.getCommands(GazelleCoords).toString();
+                    PortSender.send(dataToSend);
+                }
+            } else {
+                GUI.error("You are not flying a supported module.");
             }
         }
 
